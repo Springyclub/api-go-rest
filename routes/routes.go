@@ -2,13 +2,17 @@ package routes
 
 import (
 	"api-rest/controllers"
+	"github.com/gorilla/mux"
 	"log"
 	"net/http"
 )
 
 func HandleRequest() {
-	http.HandleFunc("/", controllers.Home)
-	http.HandleFunc("/personalities", controllers.AllPersonalities)
+	r := mux.NewRouter()
 
-	log.Fatal(http.ListenAndServe(":8000", nil))
+	r.HandleFunc("/", controllers.Home)
+	r.HandleFunc("/personalities", controllers.AllPersonalities).Methods("Get")
+	r.HandleFunc("/personalities/{id}", controllers.ReturnPersonality).Methods("Get")
+
+	log.Fatal(http.ListenAndServe(":8000", r))
 }

@@ -8,12 +8,14 @@ import (
 func main() {
 	models.Personalities = []models.Personality{
 		{
-			Name:    "Guigas",
-			History: "História",
+			Name:    "Guilherme Fernandes dos Santos",
+			History: "História da minha vida",
+			Id:      2,
 		},
 		{
 			Name:    "Guigas",
 			History: "História",
+			Id:      1,
 		},
 	}
 
